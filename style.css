@@ -1,0 +1,359 @@
+/* Importação de fontes */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap');
+
+/* Reset básico e variáveis */
+:root {
+    --primary-color: #ffcc00; /* Dourado para destaque */
+    --secondary-color: #f5a623; /* Laranja para destaque */
+    --accent-color: #a33e3e; /* Tom terroso médio */
+    --text-color: #ffffff; /* Texto branco */
+    --light-bg: #2c2c2c; /* Fundo cinza escuro para seções */
+    --dark-bg: #1a1a1a; /* Fundo preto para o corpo */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--dark-bg);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Tipografia */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.8em; }
+h4 { font-size: 1.4em; }
+
+p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Header */
+header {
+    background-color: #111;
+    color: var(--text-color);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+header h1 a {
+    color: var(--primary-color);
+}
+
+header h1 a:hover {
+    color: var(--secondary-color);
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav a {
+    color: var(--text-color);
+    font-weight: 400;
+    font-size: 1.1em;
+    padding: 5px 0;
+}
+
+header nav a:hover {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Estilos de foco para acessibilidade */
+header nav a:focus, .btn:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+/* Hero Section */
+.hero {
+    background: url('https://via.placeholder.com/1500x500?text=Raizes+Vivas+Banner') no-repeat center center/cover;
+    color: var(--text-color);
+    text-align: center;
+    padding: 100px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Overlay escuro */
+    z-index: -1;
+}
+
+.hero h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+}
+
+.hero p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--dark-bg);
+}
+
+/* Content Sections */
+.content-section, .detail-section {
+    padding: 60px 0;
+}
+
+.content-section {
+    background-color: var(--light-bg);
+    text-align: center;
+}
+
+/* Animação suave para os títulos de seção (mantida, mas não depende de JS) */
+.section-title {
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 10px;
+    /* A animação 'fadeIn' aqui agora é puramente CSS e é aplicada no carregamento inicial */
+    animation: fadeIn 1s ease-out;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--secondary-color);
+}
+
+/* Animação para o efeito de "fade-in" no carregamento */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.grid-item {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+}
+
+.grid-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.grid-item h4 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.grid-item .read-more {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.read-more:hover {
+    color: var(--primary-color);
+}
+
+.detail-section {
+    padding: 80px 0;
+    background-color: var(--dark-bg);
+}
+
+.detail-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.detail-section.bg-light {
+    background-color: var(--light-bg);
+}
+
+/* Footer */
+footer {
+    background-color: #111;
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    header nav ul {
+        justify-content: center;
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    .hero h2 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .section-title {
+        font-size: 1.8em;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .section-title {
+        font-size: 1.8em;
+    }
+}
+
+.bio-box {
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between; /* Para alinhar logo e navegação */
+    align-items: center; /* Para centralizar verticalmente */
+}
+
+/* Estilo para o cabeçalho e seus elementos */
+header .container {
+    display: flex;
+    justify-content: space-between; /* Espaça a logo e a navegação nas extremidades */
+    align-items: center; /* Centraliza os itens verticalmente */
+}
+
+/* Estilo para a imagem da logo */
+.site-logo {
+    height: 80px; /* Ajuste o tamanho da sua logo aqui */
+    width: auto;
+}
+
+.sobre-logo {
+    height: 100px !important;
+    width: auto !important;
+}
